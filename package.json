@@ -1,0 +1,29 @@
+{
+  "name": "kung-food",
+  "version": "1.0.0",
+  "description": "Food reciepes finder.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vegetablecode/Kung-Food.git"
+  },
+  "author": "Kamil Uhryn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vegetablecode/Kung-Food/issues"
+  },
+  "homepage": "https://github.com/vegetablecode/Kung-Food#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}

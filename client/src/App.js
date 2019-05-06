@@ -1,22 +1,16 @@
 import React, { Component } from "react";
 
-import "antd/dist/antd.less";
-import "./App.css";
-import AppNavbar from "./components/navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 
-import { Switch } from 'antd';
+import { Button } from "antd";
+
+import "./App.css";
 
 class App extends Component {
-
-  onChange = (checked) => {
-    console.log(`switch to ${checked}`);
-  }
-
   render() {
     return (
       <div className="App">
-        <AppNavbar />
-        <div><Switch defaultChecked onChange={this.onChange} /></div>
+        <Navbar />
       </div>
     );
   }

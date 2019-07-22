@@ -12,7 +12,7 @@ export const Banner01DataSource = {
     className: "banner0-content",
     children: (
       <>
-        <p>MERN Stack Starter App</p>
+        <p>Food Finder...</p>
       </>
     )
   },

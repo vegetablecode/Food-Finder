@@ -6,12 +6,12 @@ import store from "./store";
 
 import "./App.css";
 import Navbar from "./components/navigation/Navbar";
-import Contact from "./components/pages/static/contact/Contact";
-import About from "./components/pages/static/about/About";
-import Landing from "./components/pages/static/landing/Landing";
-import Login from "./components/pages/auth/login/Login";
-import Register from "./components/pages/auth/register/Register";
-import Dashboard from "./components/app/Dashboard";
+import Front from "./pages/front/Front";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Front} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/signin" component={Login} />

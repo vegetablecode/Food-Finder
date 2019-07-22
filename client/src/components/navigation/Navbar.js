@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
+import { Drawer, Button } from "antd";
+
+import "./styles/Navbar.css";
 import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
-import { Drawer, Button, Menu } from "antd";
-
-import "../../styles/navbar/Navbar.css";
+import MenuItems from "./MenuItems";
 
 class Navbar extends Component {
   state = {
@@ -27,7 +29,7 @@ class Navbar extends Component {
     return (
       <nav className="menuBar">
         <div className="logo">
-          <a href="">Kung Food</a>
+          <Link to="/">Food Finder</Link>
         </div>
         <div className="menuCon">
           <div className="leftMenu">
@@ -46,20 +48,7 @@ class Navbar extends Component {
             onClose={this.onClose}
             visible={this.state.visible}
           >
-            <Menu mode="vertical">
-              <Menu.Item key="mail">
-                <a href="">Home</a>
-              </Menu.Item>
-              <Menu.Item key="about">
-                <a href="">About</a>
-							</Menu.Item>
-							<Menu.Item key="mail">
-							<a href="">Sign In</a>
-						</Menu.Item>
-						<Menu.Item key="about">
-							<a href="">Sign Up</a>
-						</Menu.Item>
-            </Menu>
+            <MenuItems mode="vertical" />
           </Drawer>
         </div>
       </nav>
@@ -67,4 +56,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

@@ -12,6 +12,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import SearchResultPage from "./pages/searchresult/SearchResultPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/signin" component={Login} />
             <Route exact path="/signup" component={Register} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/searchresult" component={SearchResultPage} />
           </Switch>
         </BrowserRouter>
       </Provider>

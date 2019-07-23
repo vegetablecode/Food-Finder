@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { Form, Input, Icon, Button } from "antd";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
-import "./Search.css"
+import { Form, Input, Icon, Button, notification } from "antd";
+import "./Search.css";
+
+import { addProducts } from "../../actions/searchActions";
 
 class Search extends Component {
   state = {
@@ -9,15 +14,28 @@ class Search extends Component {
     products: []
   };
 
+  static propTypes = {
+    addProducts: PropTypes.func.isRequired
+  };
+
   addProduct = e => {
     e.preventDefault();
-    const product = {
-      id: this.state.products.length,
-      name: this.state.product
-    };
-    this.setState({
-      products: [...this.state.products, product]
-    });
+
+    // if input field is not null
+    if (this.state.product !== "" && this.state.product !== null) {
+      // add product to state
+      const product = {
+        id: this.state.products.length,
+        name: this.state.product
+      };
+      this.setState({
+        products: [...this.state.products, product],
+        product: ""
+      });
+
+      // clear input filed
+      this.productInput.state.value = "";
+    }
   };
 
   onChange = e => {
@@ -26,285 +44,45 @@ class Search extends Component {
     });
   };
 
+  searchForReciepes = () => {
+    // check if there is at least one product added
+    if (this.state.products.length > 0) {
+      // add products to local store
+      this.props.addProducts(this.state.products);
+
+      this.props.history.push("/searchresult");
+    } else {
+      // show notification
+      this.openNotificationWithIcon("info");
+    }
+  };
+
+  openNotificationWithIcon = type => {
+    notification[type]({
+      message: "Cannot find the recipes!",
+      description:
+        "You have to add at least one product!"
+    });
+  };
+
   render() {
-    const prd = [
-      {
-        id: 0,
-        name: "grzanki"
-      },
-      {
-        id: 1,
-        name: "chlebek"
-      },
-      {
-        id: 2,
-        name: "lapek"
-      },
-      {
-        id: 3,
-        name: "ciastko"
-      },
-      {
-        id: 4,
-        name: "woda"
-      },
-      {
-        id: 5,
-        name: "kawa"
-      },
-      {
-        id: 6,
-        name: "herbate"
-      },
-      {
-        id: 7,
-        name: "lapek"
-      },
-      {
-        id: 8,
-        name: "ciastko"
-      },
-      {
-        id: 9,
-        name: "woda"
-      },
-      {
-        id: 10,
-        name: "kawa"
-      },
-      {
-        id: 11,
-        name: "herbate"
-      },
-      {
-        id: 1,
-        name: "chlebek"
-      },
-      {
-        id: 2,
-        name: "lapek"
-      },
-      {
-        id: 3,
-        name: "ciastko"
-      },
-      {
-        id: 4,
-        name: "woda"
-      },
-      {
-        id: 5,
-        name: "kawa"
-      },
-      {
-        id: 6,
-        name: "herbate"
-      },
-      {
-        id: 7,
-        name: "lapek"
-      },
-      {
-        id: 8,
-        name: "ciastko"
-      },
-      {
-        id: 9,
-        name: "woda"
-      },
-      {
-        id: 10,
-        name: "kawa"
-      },
-      {
-        id: 11,
-        name: "herbate"
-      },
-      {
-        id: 1,
-        name: "chlebek"
-      },
-      {
-        id: 2,
-        name: "lapek"
-      },
-      {
-        id: 3,
-        name: "ciastko"
-      },
-      {
-        id: 4,
-        name: "woda"
-      },
-      {
-        id: 5,
-        name: "kawa"
-      },
-      {
-        id: 6,
-        name: "herbate"
-      },
-      {
-        id: 7,
-        name: "lapek"
-      },
-      {
-        id: 8,
-        name: "ciastko"
-      },
-      {
-        id: 9,
-        name: "woda"
-      },
-      {
-        id: 10,
-        name: "kawa"
-      },
-      {
-        id: 11,
-        name: "herbate"
-      },
-      {
-        id: 1,
-        name: "chlebek"
-      },
-      {
-        id: 2,
-        name: "lapek"
-      },
-      {
-        id: 3,
-        name: "ciastko"
-      },
-      {
-        id: 4,
-        name: "woda"
-      },
-      {
-        id: 5,
-        name: "kawa"
-      },
-      {
-        id: 6,
-        name: "herbate"
-      },
-      {
-        id: 7,
-        name: "lapek"
-      },
-      {
-        id: 8,
-        name: "ciastko"
-      },
-      {
-        id: 9,
-        name: "woda"
-      },
-      {
-        id: 10,
-        name: "kawa"
-      },
-      {
-        id: 11,
-        name: "herbate"
-      },
-      {
-        id: 1,
-        name: "chlebek"
-      },
-      {
-        id: 2,
-        name: "lapek"
-      },
-      {
-        id: 3,
-        name: "ciastko"
-      },
-      {
-        id: 4,
-        name: "woda"
-      },
-      {
-        id: 5,
-        name: "kawa"
-      },
-      {
-        id: 6,
-        name: "herbate"
-      },
-      {
-        id: 7,
-        name: "lapek"
-      },
-      {
-        id: 8,
-        name: "ciastko"
-      },
-      {
-        id: 9,
-        name: "woda"
-      },
-      {
-        id: 10,
-        name: "kawa"
-      },
-      {
-        id: 11,
-        name: "herbate"
-      },
-      {
-        id: 1,
-        name: "chlebek"
-      },
-      {
-        id: 2,
-        name: "lapek"
-      },
-      {
-        id: 3,
-        name: "ciastko"
-      },
-      {
-        id: 4,
-        name: "woda"
-      },
-      {
-        id: 5,
-        name: "kawa"
-      },
-      {
-        id: 6,
-        name: "herbate"
-      },
-      {
-        id: 7,
-        name: "lapek"
-      },
-      {
-        id: 8,
-        name: "ciastko"
-      },
-      {
-        id: 9,
-        name: "woda"
-      },
-      {
-        id: 10,
-        name: "kawa"
-      },
-      {
-        id: 11,
-        name: "herbate"
-      }
-    ];
-    const productList = prd.map(product => (
-      <Button className="tag-button" type="primary" size="small" icon="close" key={product.id}>{product.name}</Button>
+    const productList = this.state.products.map(product => (
+      <Button
+        className="tag-button"
+        type="primary"
+        size="small"
+        icon="close"
+        key={product.id}
+      >
+        {product.name}
+      </Button>
     ));
     return (
       <div>
         <Form onSubmit={e => this.addProduct(e)}>
           <Form.Item>
             <Input
+              ref={el => (this.productInput = el)}
               prefix={<Icon type="edit" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="text"
               name="product"
@@ -326,17 +104,26 @@ class Search extends Component {
             />
           </Form.Item>
         </Form>
-        <Button type="primary" shape="round" icon="search" size="large">
+        <Button
+          onClick={() => this.searchForReciepes()}
+          type="primary"
+          shape="round"
+          icon="search"
+          size="large"
+        >
           Search for reciepes
         </Button>
         <div className="scrollouter">
-            <div className="scrollinner" id="scroll-bar">
+          <div className="scrollinner" id="scroll-bar">
             {productList}
-            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Search;
+export default connect(
+  null,
+  { addProducts }
+)(withRouter(Search));

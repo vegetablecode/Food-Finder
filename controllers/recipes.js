@@ -7,18 +7,17 @@ module.exports = {
 
     // Build the URL
     var getUrl =
-      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=5&ranking=1&ignorePantry=false&";
+      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=5&ranking=1&ignorePantry=false&ingredients=";
 
     for (i = 0; i < products.length; i++) {
       if (i !== 0) getUrl += "%2C";
-      getUrl += products[i];
+      getUrl += products[i].name;
     }
 
     // Get recipes from API
     try {
       const result = await axios({
-        url:
-          "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/dindByIngredients?number=5&ranking=1&ignorePantry=false&ingredients=#)(id03w830j",
+        url: getUrl,
         method: "GET",
         headers: {
           "X-RapidAPI-Key":

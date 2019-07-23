@@ -1,7 +1,8 @@
-import { ADD_PRODUCTS } from "../actions/types";
+import { ADD_PRODUCTS, GET_RECIPES } from "../actions/types";
 
 const initialState = {
-  products: []
+  products: [],
+  recipes: []
 };
 
 export default function(state = initialState, action) {
@@ -9,6 +10,10 @@ export default function(state = initialState, action) {
     case ADD_PRODUCTS:
       return {
         products: action.payload.products
+      };
+    case GET_RECIPES:
+      return {
+        recipes: action.payload
       };
 
     default:

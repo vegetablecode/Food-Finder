@@ -25,6 +25,7 @@ mongoose
 // Use Routes
 app.use("/api/users", require("./routes/users"));
 app.use("/api/examples", require("./routes/examples"));
+app.use("/api/recipes", require("./routes/recipes"));
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {

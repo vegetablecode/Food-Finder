@@ -7,7 +7,7 @@ module.exports = {
 
     // Build the URL
     var getUrl =
-      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=5&ranking=1&ignorePantry=false&ingredients=";
+      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=12&ranking=1&ignorePantry=false&ingredients=";
 
     for (i = 0; i < products.length; i++) {
       if (i !== 0) getUrl += "%2C";

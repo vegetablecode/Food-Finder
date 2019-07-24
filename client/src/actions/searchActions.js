@@ -12,16 +12,17 @@ export const addProducts = products => {
 };
 
 // GET RECIPES FROM API
-export const getRecipes = products => async dispatch => {
+export const getRecipes = (products, history) => async dispatch => {
   // dispatch(setProductsLoading());
   await axios
     .post("api/recipes/getbyingredients", { products })
-    .then(res =>
+    .then(res => {
+      history.push("/searchresult");
       dispatch({
         type: GET_RECIPES,
         payload: res.data
-      })
-    )
+      });
+    })
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );

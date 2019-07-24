@@ -9,19 +9,16 @@ class RecipeCard extends Component {
 
     const readyIn = (
       <div>
-        <Icon
-          type="clock-circle"
-          style={{marginRight: 5}}
-        /> 
-         {recipe.details.readyInMinutes} mins{" "}
+        <Icon type="clock-circle" style={{ marginRight: 5 }} />
+        {recipe.details.readyInMinutes} mins{" "}
       </div>
     );
 
     return (
       <Card
+        style={{ marginRight: 20, marginBottom: 20 }}
         title={recipe.title}
         extra={readyIn}
-        style={{ maxWidth: 500 }}
         cover={<img alt="example" src={recipe.image} />}
         actions={[
           <Icon type="heart" />,

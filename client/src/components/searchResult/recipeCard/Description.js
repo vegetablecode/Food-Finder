@@ -7,10 +7,14 @@ class Description extends Component {
   render() {
     const { title, details } = this.props;
 
+    const instructions = details.instructions
+      ? details.instructions
+      : "No instruction added.";
+
     return (
       <div>
         <Title level={4}>{title}</Title>
-        <p style={{ marginBottom: 15 }}>{details.instructions}</p>
+        <p style={{ marginBottom: 15 }}>{instructions}</p>
       </div>
     );
   }

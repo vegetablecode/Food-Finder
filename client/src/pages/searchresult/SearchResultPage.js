@@ -5,8 +5,7 @@ import SearchResult from "../../components/searchResult/SearchResult";
 class SearchResultPage extends Component {
   render() {
     return (
-      <div>
-        search result page
+      <div style={{ marginTop: 20, marginLeft: 20 }}>
         <SearchResult />
       </div>
     );

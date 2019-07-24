@@ -7,6 +7,7 @@ import { Form, Input, Icon, Button, notification } from "antd";
 import "./Search.css";
 
 import { addProducts } from "../../actions/searchActions";
+import { getRecipes } from "../../actions/searchActions";
 
 class Search extends Component {
   state = {
@@ -48,9 +49,7 @@ class Search extends Component {
     // check if there is at least one product added
     if (this.state.products.length > 0) {
       // add products to local store
-      this.props.addProducts(this.state.products);
-
-      this.props.history.push("/searchresult");
+      this.props.getRecipes(this.state.products, this.props.history);
     } else {
       // show notification
       this.openNotificationWithIcon("info");
@@ -60,8 +59,7 @@ class Search extends Component {
   openNotificationWithIcon = type => {
     notification[type]({
       message: "Cannot find the recipes!",
-      description:
-        "You have to add at least one product!"
+      description: "You have to add at least one product!"
     });
   };
 
@@ -125,5 +123,5 @@ class Search extends Component {
 
 export default connect(
   null,
-  { addProducts }
+  { addProducts, getRecipes }
 )(withRouter(Search));

@@ -17,11 +17,11 @@ export const getRecipes = (products, history) => async dispatch => {
   await axios
     .post("api/recipes/getbyingredients", { products })
     .then(res => {
-      history.push("/searchresult");
       dispatch({
         type: GET_RECIPES,
         payload: res.data
       });
+      history.push("/searchResult");
     })
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))

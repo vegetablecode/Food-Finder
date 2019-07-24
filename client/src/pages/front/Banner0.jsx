@@ -5,6 +5,8 @@ import TweenOne from 'rc-tween-one';
 import { isImg } from './utils';
 import Search from '../../components/search/Search';
 
+import Logo from "./assets/logo.png"
+
 class Banner extends React.PureComponent {
   render() {
     const { ...currentProps } = this.props;
@@ -22,7 +24,7 @@ class Banner extends React.PureComponent {
           <div key="title" {...dataSource.title}>
             {typeof dataSource.title.children === 'string' &&
             dataSource.title.children.match(isImg) ? (
-              <img src={dataSource.title.children} width="100%" alt="img" />
+              <img src={Logo} width="100%" alt="img" />
             ) : (
               dataSource.title.children
             )}

@@ -79,11 +79,11 @@ export const login = ({ email, password }, history) => async dispatch => {
   await axios
     .post("/api/users/login", body, config)
     .then(res => {
-      history.push("/dashboard");
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
       });
+      history.push("/dashboard");
     })
     .catch(err => {
       dispatch(

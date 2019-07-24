@@ -49,7 +49,9 @@ class Search extends Component {
     // check if there is at least one product added
     if (this.state.products.length > 0) {
       // add products to local store
-      this.props.getRecipes(this.state.products, this.props.history);
+      this.props.addProducts(this.state.products);
+      this.props.history.push("/loadingPage");
+      //this.props.getRecipes(this.state.products, this.props.history);
     } else {
       // show notification
       this.openNotificationWithIcon("info");

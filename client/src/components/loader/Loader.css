@@ -1,0 +1,10 @@
+.loader {
+  margin: auto;
+  margin-top: 20vh;
+  width: 50%;
+  padding: 10px;
+}
+
+.loader-element {
+    text-align: center;
+}

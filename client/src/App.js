@@ -14,6 +14,7 @@ import Register from "./pages/register/Register";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import SearchResultPage from "./pages/searchresult/SearchResultPage";
+import LoadingPage from "./pages/loading/LoadingPage";
 
 class App extends Component {
   componentDidMount() {
@@ -33,7 +34,8 @@ class App extends Component {
               <Route exact path="/signin" component={Login} />
               <Route exact path="/signup" component={Register} />
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/searchresult" component={SearchResultPage} />
+              <Route exact path="/searchResult" component={SearchResultPage} />
+              <Route exact path="/loadingPage" component={LoadingPage} />
             </Switch>
           </BrowserRouter>
         </Provider>

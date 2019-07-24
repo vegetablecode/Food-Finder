@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { getRecipes } from "../../actions/searchActions";
 import RecipeCard from "./recipeCard/RecipeCard";
 import { Row, Col } from "antd";
 
 class SearchResult extends Component {
   static propTypes = {
-    getRecipes: PropTypes.func.isRequired,
     recipes: PropTypes.array.isRequired
   };
 
@@ -21,7 +19,9 @@ class SearchResult extends Component {
 
     return (
       <div>
-        <Row justify="start" align="top" type="flex">{recipes}</Row>
+        <Row justify="start" align="top" type="flex">
+          {recipes}
+        </Row>
       </div>
     );
   }
@@ -34,5 +34,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getRecipes }
+  {}
 )(SearchResult);

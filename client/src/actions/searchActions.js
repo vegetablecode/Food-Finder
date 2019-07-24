@@ -2,7 +2,6 @@ import axios from "axios";
 
 import { ADD_PRODUCTS, GET_RECIPES } from "./types";
 import { returnErrors } from "./errorActions";
-import { tokenConfig } from "./authActions";
 
 // ADD PRODUCTS
 export const addProducts = products => {
@@ -13,10 +12,10 @@ export const addProducts = products => {
 };
 
 // GET RECIPES FROM API
-export const getRecipes = products => async (dispatch, getState) => {
+export const getRecipes = products => async dispatch => {
   // dispatch(setProductsLoading());
   await axios
-    .post("api/recipes/getbyingredients", products, tokenConfig(getState))
+    .post("api/recipes/getbyingredients", { products })
     .then(res =>
       dispatch({
         type: GET_RECIPES,

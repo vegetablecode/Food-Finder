@@ -14,14 +14,14 @@ class SearchResult extends Component {
 
   render() {
     const recipes = this.props.recipes.map(recipe => (
-      <Col xs={24} sm={24} md={12} lg={12} xl={6}>
-        <RecipeCard key={recipe.id} recipe={recipe} />
+      <Col key={recipe.id} xs={24} sm={24} md={12} lg={12} xl={6}>
+        <RecipeCard recipe={recipe} />
       </Col>
     ));
 
     return (
       <div>
-        <Row justify="center" align="top" type="flex">{recipes}</Row>
+        <Row justify="start" align="top" type="flex">{recipes}</Row>
       </div>
     );
   }

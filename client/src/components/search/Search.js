@@ -35,11 +35,15 @@ class Search extends Component {
       });
 
       // clear input filed
-      this.productInput.state.value = "";
+      this.productInput.setState({ value: "" });
     }
   };
 
   onChange = e => {
+    // if typed world ends with comma
+    if (e.target.value.endsWith(",")) {
+      this.addProduct(e);
+    }
     this.setState({
       [e.target.name]: e.target.value
     });

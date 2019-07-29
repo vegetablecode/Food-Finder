@@ -65,9 +65,16 @@ class Search extends Component {
     });
   };
 
+  removeProduct = productId => {
+    this.setState({
+      products: this.state.products.filter(product => product.id !== productId)
+    });
+  };
+
   render() {
     const productList = this.state.products.map(product => (
       <Button
+        onClick={() => this.removeProduct(product.id)}
         className="tag-button"
         type="primary"
         size="small"
